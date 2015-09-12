@@ -6,8 +6,11 @@ rmlines <- which(powerraw$Date != "1/2/2007" & powerraw$Date != "2/2/2007")
 powerdata <- powerraw[(-1 * rmlines),]
 
 #convert columns to appropriate formats
-#date and time columns to date and time 
+
+#combine date and time into one variable
 powerdata$datetime <- paste(powerdata$Date, powerdata$Time)
+
+#date and time convert to date and time 
 powerdata$datetime <- as.POSIXct(powerdata$datetime, format="%d/%m/%Y %H:%M:%S")
 
 #all other columns to numeric
